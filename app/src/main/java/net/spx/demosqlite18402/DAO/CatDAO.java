@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import net.spx.demosqlite18402.DTO.CatDTO;
 import net.spx.demosqlite18402.DbHelper.MyDbHelper;
@@ -14,8 +15,9 @@ import java.util.ArrayList;
 public class CatDAO {
     MyDbHelper dbHelper;
     SQLiteDatabase db;
-
+    Context context;
     public CatDAO(Context context){
+        this.context = context;
         dbHelper = new MyDbHelper(context );
         db = dbHelper.getWritableDatabase();
     }
@@ -48,8 +50,15 @@ public class CatDAO {
     public int addRow(CatDTO objCat){
         ContentValues values = new ContentValues();
         values.put("name", objCat.getName() );
-        long kq = db.insert("tb_cat",null,values);
-        return  (int) kq;
+
+        try{
+             long kq = db.insert("tb_cat",null,values);
+             return  (int) kq;
+
+        }catch (Exception ex){
+            Toast.makeText(context, "Lỗi thêm: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        return 0;
     }
 
     // hàm sửa
