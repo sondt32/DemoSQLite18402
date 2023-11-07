@@ -3,7 +3,9 @@ package net.spx.demosqlite18402.DAO;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -51,14 +53,10 @@ public class CatDAO {
         ContentValues values = new ContentValues();
         values.put("name", objCat.getName() );
 
-        try{
              long kq = db.insert("tb_cat",null,values);
+
              return  (int) kq;
 
-        }catch (Exception ex){
-            Toast.makeText(context, "Lỗi thêm: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        return 0;
     }
 
     // hàm sửa

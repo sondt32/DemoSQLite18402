@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import net.spx.demosqlite18402.DAO.CatDAO;
 import net.spx.demosqlite18402.DTO.CatDTO;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         int id_moi= catDAO.addRow( objCat );
 
         if(id_moi <=0){
+            Toast.makeText(this, "Lỗi không thêm được bản ghi mới, hãy xem log.", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "onCreate: Không thêm được bản ghi mới ");
         }else{
             Log.d(TAG, "onCreate: Đã thêm thành coong, id mới = " + id_moi );
