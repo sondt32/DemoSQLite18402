@@ -21,7 +21,17 @@ public class MainActivity extends AppCompatActivity {
 
         // Khởi tạo DAO
         catDAO = new CatDAO(this);
+        // Thêm mới dòng dữ liệu
 
+        CatDTO objCat = new CatDTO("Bàn ghế");
+
+        int id_moi= catDAO.addRow( objCat );
+
+        if(id_moi <=0){
+            Log.d(TAG, "onCreate: Không thêm được bản ghi mới ");
+        }else{
+            Log.d(TAG, "onCreate: Đã thêm thành coong, id mới = " + id_moi );
+        }
 
 
         //Lấy ds

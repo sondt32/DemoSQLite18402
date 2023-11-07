@@ -1,5 +1,6 @@
 package net.spx.demosqlite18402.DAO;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -30,7 +31,7 @@ public class CatDAO {
             do {
                 CatDTO objCat = new CatDTO();
                 objCat.setId(  c.getInt(0 )  );
-                objCat.setName(  c.getString(0 )  );
+                objCat.setName(  c.getString(1 )  );
                 listCat.add( objCat ); //đưa đối tượng vào danh sách
 
             }while (c.moveToNext());
@@ -44,7 +45,12 @@ public class CatDAO {
 
 
     // hàm thêm mới
-
+    public int addRow(CatDTO objCat){
+        ContentValues values = new ContentValues();
+        values.put("name", objCat.getName() );
+        long kq = db.insert("tb_cat",null,values);
+        return  (int) kq;
+    }
 
     // hàm sửa
 
