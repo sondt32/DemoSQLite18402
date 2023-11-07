@@ -25,7 +25,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
         // Thêm dữ lệu DEMO
         sqLiteDatabase.execSQL("INSERT INTO tb_cat ('name') VALUES('Tivi'), ('Tủ lạnh'), ('Máy giặt') ");
-        
+
     }
 
     @Override
