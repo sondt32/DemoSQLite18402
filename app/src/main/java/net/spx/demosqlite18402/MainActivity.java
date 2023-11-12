@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onCreate: Đã thêm thành coong, id mới = " + id_moi );
         }
 
-
         //Lấy ds
         listCat = catDAO.getList();
 
@@ -48,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onCreate: id =  " + tmp.getId() + "----> name = " + tmp.getName() );
 
         }
-        // chạy ứng dụng và xem log
+        // chạy ứng dụng và xem
+
 
     }
 }
